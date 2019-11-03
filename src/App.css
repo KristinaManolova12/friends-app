@@ -1,0 +1,19 @@
+.App {
+  text-align: center;
+  margin: auto;
+  background-color: rgba( 266, 266, 266, 0.9);
+  width: 70%;
+}
+body{
+  background-image: url(./Central_Perk.jpg);
+  background-position: top;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+
+
+
+
