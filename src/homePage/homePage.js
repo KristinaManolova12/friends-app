@@ -1,30 +1,37 @@
 import React from 'react'
 import './homePage.css'
-class Home extends React.Component{
+// import friends from './friends.jpg'
+import aboutfriends from './aboutfriends.jpg'
+import share from './share.jpg'
+import shop from './shop.jpg'
+class Home extends React.Component {
     render() {
         return (
-            <div>
-<section className='all-news'>
-    <article className='news'>
-        <h3>Friends Reunion</h3>
-        <p>lasdlasdal lda ldasd laksld kad a;lsdk al a;s aljdskfh skdjsdkjfskdj fsdj lfksjfs js fsfsldf</p>
-    </article>
-    <article className='news'>
-        <h3>Friends Reunion 2</h3>
-        <p>lasdlasdal lda ldasd laksld kad a;lsdk al a;s aljdskfh skdjsdkjfskdj fsdj lfksjfs js fsfsldf</p>
-    </article>
-    <article className='news'>
-        <h3>Friends Reunion 3</h3>
-        <p>lasdlasdal lda ldasd laksld kad a;lsdk al a;s aljdskfh skdjsdkjfskdj fsdj lfksjfs js fsfsldf</p>
-    </article>
-</section>
-<section className='bloopers'>
-    <h3>Bloopers</h3>
-<article>
-    <h3>Season One</h3>
-</article>
-</section>
-</div>
+            <div className='home'>
+                Hello F.R.I.E.N.D.S fan!
+                You have found your place in internet world. Here you will find all happines that you need.
+                
+                With us you can:
+                <article>
+                <p>
+                <img src={aboutfriends} className='img left' alt='friends'></img>
+                Share your toughts, wishes and F.R.I.E.N.D.S things.
+                </p>
+                </article>
+                <article>
+                <p>Find spicy information about your favorite character.
+                <img src={share} className='img right' alt='information'></img>
+                </p>
+                </article>
+                
+                <article>
+                <p>
+                <img src={shop} className='img left' alt='shop'></img>
+                Fill your F.R.I.E.N.D.S collection... Check out our Shop.
+                </p>
+                </article>
+             
+            </div>
         )
     }
 }

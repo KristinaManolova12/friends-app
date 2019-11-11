@@ -1,0 +1,37 @@
+ul li {
+    list-style-type: circle;
+}
+
+div {
+    
+    font-size: 120%;
+}
+.home {
+    margin: 25px auto;
+    padding: 5%;
+    width: 80%;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 5px 5px 20px 6px grey;
+    height: 60%;
+}
+.img {
+    display: inline-block;
+    width: 26%;
+}
+.left{
+    float: left;
+    padding-right: 3%;
+}
+article{
+    display: inline-flex
+}
+article p {
+    display: inline-flex;
+    
+}
+.right{
+    float: right;
+    padding-left: 1%;
+    padding-right: 1%;
+}

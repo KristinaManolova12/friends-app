@@ -1,8 +1,9 @@
 .App {
-  text-align: center;
   margin: auto;
   background-color: rgba( 266, 266, 266, 0.9);
-  width: 70%;
+  font-family: 'Permanent Marker', cursive;
+   width: 70%;
+   height: 1500px;
 }
 body{
   background-image: url(./Central_Perk.jpg);
