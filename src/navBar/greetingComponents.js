@@ -17,8 +17,13 @@ class UserGreeting extends React.Component {
         return (
             <Router>
                 <li><Link to="/profile">Welcome, {this.props.username}!</Link></li>
+<<<<<<< Updated upstream
                 <li><Link to="/logout">Logout</Link></li>
                 {/* <IsAdmin isAdmin={false} /> */}
+=======
+                <li><Link to="/logout">L.o.g.o.u.t</Link></li>
+                
+>>>>>>> Stashed changes
                 <Switch>
                     <Route path="/profile">
                         <Profile />
@@ -37,8 +42,13 @@ class GuestGreeting extends React.Component {
     render() {
         return (
             
+<<<<<<< Updated upstream
                <span> <li><Link to="/login">Login</Link></li>
                <li><Link to="/register">Join Us</Link></li></span>
+=======
+               <span> <li><Link to="/login">L.o.g.i.n</Link></li>
+               <li><Link to="/register">J.o.i.n U.s</Link></li></span>
+>>>>>>> Stashed changes
                
             
         )

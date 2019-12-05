@@ -2,6 +2,7 @@ ul li {
     list-style-type: circle;
 }
 
+<<<<<<< Updated upstream
 div {
     
     font-size: 120%;
@@ -18,15 +19,39 @@ div {
 .img {
     display: inline-block;
     width: 26%;
+=======
+
+div {
+    font-size: 120%;
+}
+
+.img {
+    display: inline-block;
+    width: 26%;
+    transform: rotate(10deg);
+>>>>>>> Stashed changes
 }
 .left{
     float: left;
     padding-right: 3%;
+<<<<<<< Updated upstream
 }
 article{
     display: inline-flex
 }
 article p {
+=======
+    transform: rotate(-10deg);
+}
+article{
+    margin-top: 5%;
+    font-size: 160%;
+    display: inline-flex;
+}
+article p {
+    width: 70%;
+    padding-top: 5%;
+>>>>>>> Stashed changes
     display: inline-flex;
     
 }
