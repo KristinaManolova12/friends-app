@@ -1,0 +1,59 @@
+.Login-register {
+    width: 70%;
+    margin: auto;
+    padding: 5%;
+    padding-top: 2%;
+    font-family: cursive;
+    border: 2px solid rgb(54, 54, 141);
+    border-radius: 5px;
+    text-align: center;
+}
+.login-registerH{
+    margin: auto;
+    width: 60%;
+    margin-bottom: 2%;
+}
+#username,#password, #password-repeat {
+    margin: auto;
+    display: block;
+    margin-top: 1%;
+    margin-bottom: 1.5%;
+    padding: 0.5%;
+    border-radius: 10px;
+    width: 25%;
+    font-family: cursive;
+}
+.login-registerBtn {
+    width: 10%;
+    padding: 10px 25px 10px 25px;
+    background-color: rgb(54, 54, 141);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    text-align: center;
+    margin: 2% 5% 2% 5%;
+    font-family: cursive;
+}
+.intro-gif{
+    float: left;
+    border-radius: 5px;
+    margin-top: 2%;
+}
+.intro-gif-register{
+    width: 45%;
+    float: left;
+    border-radius: 5px;
+    margin-top: 2%;
+}
+.login-register-label {
+    margin-top: 5%;
+}
+.register-label{
+    margin-top: 1.2%;
+}
+
+.error{
+    font-size: 12px;
+    color: red;
+    font-weight: bold;
+}

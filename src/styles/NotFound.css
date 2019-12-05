@@ -1,0 +1,20 @@
+.notFound{
+    width: 70%;
+    margin: auto;
+    padding: 5%;
+    padding-top: 0;
+    font-family: cursive;
+    border: 2px solid rgb(54, 54, 141);
+    border-radius: 5px;
+    height: 90vh;
+}
+.notfound-img{
+    margin-top: 12%;
+    float: left;
+    border-radius: 10px;
+}
+.notfoundH{
+    font-size: 200%;
+    margin-top: 18%;
+    margin-left: 50%;
+}
