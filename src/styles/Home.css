@@ -1,0 +1,42 @@
+.divPage {
+    width: 70%;
+    margin: auto;
+    padding: 5%;
+    font-family: cursive;
+    border: 2px solid rgb(54, 54, 141);
+    border-radius: 5px;
+}
+ul li {
+    list-style-type: circle;
+}
+.divPage {
+    font-size: 110%;
+}
+
+.home-img {
+    display: inline-block;
+    width: 20%;
+    transform: rotate(10deg);
+}
+.left{
+    float: left;
+    padding-right: 3%;
+    transform: rotate(-10deg);
+}
+.article{
+    margin-top: 5%;
+    
+    font-size: 100%;
+    display: inline-flex;
+}
+.article-p {
+    width: 70%;
+    padding-top: 5%;
+    display: inline-flex;
+    
+}
+.right{
+    float: right;
+    padding-left: 1%;
+    padding-right: 1%;
+}

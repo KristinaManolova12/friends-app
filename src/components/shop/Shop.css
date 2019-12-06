@@ -1,0 +1,81 @@
+.shop {
+    width: 70%;
+    margin: auto;
+    padding: 5%;
+    padding-top: 0;
+    font-family: cursive;
+    border: 2px solid rgb(54, 54, 141);
+    border-radius: 5px;
+
+}
+
+h3{
+    text-align: center;
+}
+
+.shop-article {
+    display: inline-block;
+    background-color: white;
+    width: 30%;
+    height: auto;
+    text-align: center;
+    border: 1px solid rgb(54, 54, 141);
+    border-radius: 8px;
+    margin: auto;
+    padding: 2% 0;
+    margin: 0 1% 5% 1%;
+}
+.shopH{
+    padding: 2%;
+}
+
+.p {
+    font-size: 95%;
+    padding: 2% 0;
+    margin: 2% 0;
+    
+
+}
+.offer-span{
+    margin: 1.2%;
+   
+}
+.create-link{
+    color: red;
+    font-weight: 900;
+    text-decoration: wavy;
+}
+.productName {
+    font-size: 110%;
+    text-decoration: underline;
+    font-weight: 800;
+}
+.shop-btn{
+    border: none;
+    text-decoration: none;
+    font-weight: bold;
+    /* padding: 10px 25px 10px 25px; */ 
+    color: rgb(54, 54, 141);
+    border-radius: 12px;
+    text-align: center;
+    margin: 7% 5% 2% 0%;
+}
+.imgDiv, .description, .button{
+    display: block;
+}
+.imgDiv{
+    width: 100%;
+    padding-top: 2%;
+    border-radius: 5px;
+    height: 18vh;
+    margin: auto;
+    margin-top: 2%;
+}
+.img {
+    width: 35%;
+    height: auto;
+    padding: 1%;
+    margin: auto;
+    /* padding-right: 5%; */
+    /* float: left; */
+}
