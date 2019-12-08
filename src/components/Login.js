@@ -1,5 +1,4 @@
 import React from "react";
-import userService from '../services/user-service'
 import "../styles/Login-Register.css";
 import friendsIntro from "../images/friendsIntro.gif"
 import inForm from '../shared/hocs/inForm'
@@ -55,10 +54,6 @@ class Login extends React.Component {
     );
   }
 }
-const initialFormState = {
-  username: '',
-  password: ''
-};
 
 const schema = yup.object({
   username: yup.string('Username shoud be a string')

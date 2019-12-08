@@ -1,11 +1,11 @@
 import React from "react";
-import "../styles/CreateProduct.css";
+import "./CreateProduct.css";
 import * as yup from 'yup';
-import inForm from '../shared/hocs/inForm'
-import productService from '../services/productService'
+import inForm from '../../shared/hocs/inForm'
+import productService from '../../services/productService'
 
 class CreateProduct extends React.Component {
-  
+
     constructor(props) {
         super(props);
 
@@ -13,65 +13,51 @@ class CreateProduct extends React.Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            profileImg: '',
+            productImg: '',
             result: ''
         }
     }
 
     onFileChange(e) {
-        this.setState({ profileImg: e.target.files[0] })
+        this.setState({ productImg: e.target.files[0] })
     }
 
     onSubmit(e) {
         e.preventDefault()
         const formData = new FormData()
-        formData.append('profileImg', this.state.profileImg)
+        formData.append('productImg', this.state.productImg)
         debugger
         productService.uploadImage(formData)
-        .then(res => {
-            debugger
-            const result = res.imageCreated
-            this.setState({productImg: result.profileImg})
-            debugger
-        })
-        productService.getimg()
-        .then(imgs=>
-            this.setState({result: imgs.img}))
+            .then(res => {
+                debugger
+                const result = res.imageCreated
+                this.setState({ productImg: result.productImg, result: result.productImg})
+                debugger
+            })
     }
 
 
     nameOnChangeHandler = this.props.controlChangeHandlerFactory('name');
     descriptionOnChangeHandler = this.props.controlChangeHandlerFactory('description');
     priceOnChangeHandler = this.props.controlChangeHandlerFactory('price');
-    // imgOnChanceHandler = this.props.controlChangeHandlerFactory('')
-    // productImgChangeHandler =  this.props.controlChangeHandlerFactory('productImg')
-    // onFileChange(e) {
-    //     this.setState({ profileImg: e.target.files[0] })
-    // }
 
-  
-    
-    submitHandler = (e) => { 
+
+
+    submitHandler = (e) => {
         debugger
         e.preventDefault()
-        
+
         const errors = this.props.getFormErrorState();
         if (errors) { return; }
         const data = this.props.getFormState();
         debugger
         data.productImg = this.state.productImg
-       
+
         productService.createProduct(data).then(() => {
             this.props.history.push('/shop');
         });
 
-//         productService.createProduct(formData)
-//         .then(res => {
-//             debugger
 
-//             this.props.history.push('/shop');
-//             debugger
-//         })
     }
 
 
@@ -84,8 +70,7 @@ class CreateProduct extends React.Component {
         const nameError = this.getFirstControlError('name');
         const descriptionError = this.getFirstControlError('description');
         const priceError = this.getFirstControlError('price');
-        const productImgError = this.getFirstControlError('productImg');
-        
+        const result = this.state.result
         return (
             <div className="create-product">
                 <h2 className="createH">Hey you want to spread some joy! Come on ... show us what you have for us!</h2>
@@ -95,7 +80,7 @@ class CreateProduct extends React.Component {
                     <div className="form-control create-div">
                         <label className="create-label">Name of product</label>
                         <input type="text" placeholder="T-shirt, cap, etc..." name="name" id="name"
-                            onChange={this.nameOnChangeHandler} required/>
+                            onChange={this.nameOnChangeHandler} required />
                     </div>
                     {nameError && <div className="error">{nameError}</div>}
 
@@ -111,17 +96,17 @@ class CreateProduct extends React.Component {
                         <input type="number" placeholder="what is the price" name="price" required id="price" onChange={this.priceOnChangeHandler} />
                     </div>
                     {priceError && <div className="error">{priceError}</div>}
-                    <div className="form-group">
-                            <input type="file" onChange={this.onFileChange} name= 'productImg' required/>
-                        
-                        
-                            <button className="btn btn-primary" type="button" onClick={this.onSubmit}>Upload</button>
-                        </div>
+                    <div className="form-group create-div">
+                        <input type="file" onChange={this.onFileChange} name='productImg' className="image-upload" required />
+                        <button className="btn btn-primary" type="button" className="upload-btn" onClick={this.onSubmit}>Upload Image</button>
+                    </div>
+                    {result ?
+                        <img src={this.state.result} alt='img' className="image-to-upload" />
+                    : null}
                     <div className="form-control create-div-btn">
                         <button type="button" className="create-btn" onClick={this.submitHandler}>Create</button>
                     </div>
-                    {/* <p>{this.state.result}</p> */}
-                 <img src={this.state.productImg}  alt = 'img' />
+                   
                    
                 </form>
 
@@ -147,7 +132,7 @@ const schema = yup.object({
         .min(4, 'Description must be more than 4 chars'),
     price: yup.string('Price must be a number')
         .required('Price is required'),
-    productImg:  yup.mixed().required('File required')
+    productImg: yup.mixed().required('File required')
 });
 
 

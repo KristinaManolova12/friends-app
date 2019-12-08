@@ -18,6 +18,9 @@ const userSchema = new Schema({
         type: String,
         require: true
     },
+    favorite: {
+        type: String,
+    },
 
     products: [{ type: ObjectId, ref: "Shop" }]
 

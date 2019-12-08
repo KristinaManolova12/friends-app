@@ -1,0 +1,40 @@
+.profile-div{
+    width: 70%;
+    margin: auto;
+    padding-top: 0;
+    font-family: cursive;
+    border: 2px solid rgb(54, 54, 141);
+    border-radius: 5px;
+    height: 55vh;
+}
+.nav-div{
+    width: 100%;
+    
+}
+#userinfo{
+    padding: 5%;
+}
+.profil-nav{
+   text-decoration: none;
+   background-color: rgb(54, 54, 141);
+   margin: 0;
+   text-align: center;
+   padding: 0.8% 0;
+  
+}
+.profil-nav-li{
+    text-decoration: none;
+    list-style-type: none;
+    display: inline;
+    
+}
+.profil-nav-link{
+    color: white;
+    margin: 0 10%;
+    text-decoration: none;
+}
+.profile-img{
+    float: left;
+    margin: 2% 3%;
+    border-radius: 5px;
+}

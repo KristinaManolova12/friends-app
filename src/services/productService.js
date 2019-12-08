@@ -25,6 +25,7 @@ const productService = {
         debugger
         return res.json()});
     },
+   
     getimg: function (){
       
       return fetch(`http://localhost:9999/api/upload`)
@@ -50,7 +51,34 @@ const productService = {
       .then(res => {
         debugger
         return res.json()});
-    }
+    },
+    updateProduct: function (data) {
+      const id = data.productId
+      
+      return fetch(`http://localhost:9999/api/shop/${id}`, {
+        body: JSON.stringify(data),
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        credentials: 'include'
+      }).then(res =>{
+       
+        return res});
+    },
+
+    deleteProduct: function (id) {
+      
+      debugger
+      return fetch(`http://localhost:9999/api/shop/${id}`, {
+        
+        method: 'DELETE',
+        credentials: 'include'
+      }).then(res =>{
+        debugger
+        return res});
+    },
+    
 }
 
 

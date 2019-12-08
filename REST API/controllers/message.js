@@ -2,8 +2,11 @@ const models = require('../models');
 
 module.exports = {
     getAll: (req, res, next) => {
-        models.Message.find()
+        const id = req.params.productAuthorId
+        models.Message.find().populate('products')
             .then((messages) => {
+               debugger
+               console.log(messages);
                
                 res.send(messages)})
             .catch(next);
@@ -19,14 +22,16 @@ module.exports = {
     },
 
     post: ( req, res, next) => {
-        const {name, phone, text, productId } = req.body;
+        const {name, phone, message, productId,productAuthorId } = req.body;
+        console.log(productAuthorId);
         
         const { _id } = req.user;
-        models.Shop.create({ name, phone, text, author: _id })
+        models.Message.create({ name, phone, message, author: _id, productId,productAuthorId, date: undefined })
             .then((createdMessage) => {
                
                 return Promise.all([
                     models.Shop.updateOne({ _id: productId }, { $push: { messages: createdMessage } }),
+                    models.Message.updateOne({ _id: createdMessage._id }, { $push: { products: productId } }),
                     models.Message.findOne({ _id: createdMessage._id })
                 ]);
             })

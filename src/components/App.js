@@ -12,11 +12,15 @@ import Logout from './Logout';
 import FunZone from './FunZone';
 import ProductEdit from './shop/ProductEdit';
 import NotFound from './NotFound';
-import CreateProduct from './CreateProduct';
+import CreateProduct from './shop/CreateProduct';
 import userService from '../services/user-service';
 import Main from './Main';
 import ProductDetails from './shop/Product';
-import {userContext} from './UserContext';
+import DeleteProduct from './shop/DeleteProduct';
+import ProfileProducts from './profile/ProfileProduct'
+import MyMessages from './profile/MyMessages';
+import BuyProduct from './profile/Buy'
+import DeleteMessage from './profile/DeleteMessage';
 
 function render(Cmp, otherProps) {
   return function (props) {
@@ -43,18 +47,18 @@ class App extends React.Component {
     super(props);
     const cookies = parseCookeis();
     const isLogged = !!cookies['x-auth-token'];
-    const errors = '';
     const message = '';
     const userId= localStorage.getItem('userId');
-    
+    const favorite = localStorage.getItem('favorite')
 
-    this.state = { isLogged, message, userId, user: {} };
+    this.state = { isLogged, message, userId, user: {},favorite };
   }
 
   logout = (history) => {
+    localStorage.removeItem('favorite');
     localStorage.removeItem('userId');
     userService.logout().then(() => {
-      this.setState({ isLogged: false, userId: '' });
+      this.setState({ isLogged: false, userId: '',favorite:'' });
      
       history.push('/');
       return null;
@@ -69,19 +73,18 @@ class App extends React.Component {
           this.setState({ isLogged: false, message: 'Invalid username or password' });
         } else {
           const id = data._id;
-
+          const favorite = data.favorite
           localStorage.setItem('userId', id );
-
-          this.setState({ isLogged: true, userId: id, errors: '', message: '' });
+          localStorage.setItem('favorite', favorite );
+          this.setState({ isLogged: true, userId: id,favorite:favorite, errors: '', message: '' });
           history.push('/');
           
         }
       });
   }
   render() {
-    const { isLogged, errors, message, userId } = this.state;
+    const { isLogged, errors, message, userId,favorite } = this.state;
     return (
-<userContext.Provider value={this.state}>
       <BrowserRouter>
         <div className="App">
           <Header isLogged={isLogged} />
@@ -90,13 +93,19 @@ class App extends React.Component {
 
               <Route exact path="/login" render={render(Login, { isLogged, errors, login: this.login, message })} />
               <Route exact path="/shop" render={render(Product, { isLogged })} />
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" render={render(Home, { isLogged, favorite })}  />
               <Route exact path="/register" render={render(Register, { isLogged })} />
               {/* <Route exact path="/register" component ={Register}/> */}
+              <Route exact path="/profile-products" render={render(ProfileProducts, { userId, isLogged, logout: this.logout, })} />
+              <Route exact path="/my-messages" render={render(MyMessages, { userId, isLogged, logout: this.logout, })} />
+              
+              <Route exact path="/message/delete/:id" component={DeleteMessage} />
               <Route exact path="/funzone" component={FunZone} />
+              <Route exact path="/product/delete/:id" component={DeleteProduct} />
               <Route exact path="/profile" render={render(Profile, { userId, isLogged, logout: this.logout, })} />
               <Route exact path="/product/edit/:id" render={render(ProductEdit, { userId, isLogged, logout: this.logout })} />
               <Route exact path="/logout" render={render(Logout, { isLogged, logout: this.logout })} />
+              <Route exact path="/product/buy/:id" render={render(BuyProduct, { isLogged, logout: this.logout })} />
               <Route exact path="/create-product" component={CreateProduct} />
               <Route exact path="/product/:id" render={render(ProductDetails, { isLogged, logout: this.logout, userId })} />
               <Route path="*" component={NotFound} />
@@ -107,7 +116,6 @@ class App extends React.Component {
 
         </div>
       </BrowserRouter>
-      </userContext.Provider>
     );
   }
 }

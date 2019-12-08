@@ -5,12 +5,14 @@
     font-family: cursive;
     border: 2px solid rgb(54, 54, 141);
     border-radius: 5px;
+    text-align: center;
 }
 ul li {
     list-style-type: circle;
 }
 .divPage {
     font-size: 110%;
+    text-align: center;
 }
 
 .home-img {
@@ -31,7 +33,7 @@ ul li {
 }
 .article-p {
     width: 70%;
-    padding-top: 5%;
+    padding-top: 3%;
     display: inline-flex;
     
 }
@@ -39,4 +41,19 @@ ul li {
     float: right;
     padding-left: 1%;
     padding-right: 1%;
+}
+.logged-img{
+    float: left;
+    width: 40%;
+}
+.logged-div{
+    height: 50vh;
+}
+.logged-h{
+    padding-top: 10%;
+}
+.link{
+text-decoration: none;
+font-weight: bold;
+color: rgb(54, 54, 141);
 }

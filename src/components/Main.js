@@ -1,6 +1,4 @@
 import React from 'react';
-import userContext from './UserContext'
-// import './Main.css';
 
 function Main({ children, title }) {
   return (

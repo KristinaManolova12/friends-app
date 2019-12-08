@@ -14,9 +14,10 @@
     margin-bottom: 2%;
 }
 #username,#password, #password-repeat {
+    border: 1px solid rgb(54, 54, 141);
     margin: auto;
     display: block;
-    margin-top: 1%;
+    margin-top: 0.5%;
     margin-bottom: 1.5%;
     padding: 0.5%;
     border-radius: 10px;
@@ -31,7 +32,7 @@
     border: none;
     border-radius: 12px;
     text-align: center;
-    margin: 2% 5% 2% 5%;
+    margin: 1% 5% 2% 5%;
     font-family: cursive;
 }
 .intro-gif{
@@ -40,7 +41,7 @@
     margin-top: 2%;
 }
 .intro-gif-register{
-    width: 45%;
+    width: 52%;
     float: left;
     border-radius: 5px;
     margin-top: 2%;
@@ -49,11 +50,30 @@
     margin-top: 5%;
 }
 .register-label{
-    margin-top: 1.2%;
+    margin-top: 3%;
 }
+.favorite-label{
+    font-family: cursive;
+    font-weight: bold;
+    display: block;
+}
+.select{
+    width: 26%;
+    display: block;
+    margin-left: 63%;
+    margin-top: 0.5%;
+    background-color: white;
+    border: 1px solid rgb(54, 54, 141);
+    font-family: cursive;
+    padding: 6px;
+    border-radius: 10px;
 
+}
 .error{
     font-size: 12px;
     color: red;
     font-weight: bold;
+}
+.register-btn{
+    margin-left: 59%;
 }

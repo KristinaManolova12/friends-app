@@ -8,17 +8,26 @@ const messageSchema = new Schema({
         type: String,
         required: true,
     },
-    phoneNumber: {
+    phone: {
         type: String,
         required: true,
     },
-    text: {
+    message: {
         type: String,
         required: true
     },
+    date: { type: Date, default: Date.now },
     author: {
         type: ObjectId,
         ref: "User"
+    },
+    productAuthorId: {
+        type: ObjectId,
+        ref: "User" 
+    },
+    product:{
+        type: ObjectId,
+        ref: "Shop"
     },
     products: [{ type: ObjectId, ref: "Shop" }]
 

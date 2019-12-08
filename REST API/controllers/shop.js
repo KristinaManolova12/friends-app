@@ -1,16 +1,14 @@
 const models = require('../models');
-
+const fs = require('fs')
 module.exports = {
     getAll: (req, res, next) => {
         models.Shop.find()
             .then((products) => {
-                console.log(products) 
                 res.send(products)})
             .catch(next);
     },
     getOne: (req, res, next) => {
         const id = req.params.id
-        debugger
         models.Shop.findById({_id: id})
             .then((product) => {
                
@@ -41,8 +39,19 @@ module.exports = {
 
     put: (req, res, next) => {
         const id = req.params.id;
-        const { description } = req.body;
-        models.Shop.updateOne({ _id: id }, { description })
+        debugger
+        const { description,price,name, productImg, oldImage } = req.body;
+        if (oldImage && oldImage !==productImg) {
+            const fileToRemove = oldImage.slice(22)
+        const filepath = `./public/${fileToRemove}`
+        fs.unlink(filepath, err =>{
+            if (err) throw err;
+            console.log("Successfulyy");
+            
+        })
+        }
+        
+        models.Shop.updateOne({ _id: id }, { description,price,name,productImg})
             .then((updatedProduct) => res.send(updatedProduct))
             .catch(next)
     },

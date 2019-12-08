@@ -1,0 +1,47 @@
+.buy-product{
+    width: 70%;
+    margin: auto;
+    padding-top: 3%;
+    font-family: cursive;
+    border: 2px solid rgb(54, 54, 141);
+    border-radius: 5px;
+    margin-top: 3%;
+}
+.buy-label{
+    display: block;
+}
+#name, #phone, #message {
+    margin: auto;
+    display: block;
+    margin-top: 1%;
+    margin-bottom: 1.5%;
+    padding: 0.5%;
+    border: 2px solid rgb(54, 54, 141);;
+    border-radius: 10px;
+    width: 38%;
+    padding: 1%;
+    font-family: cursive;
+}
+.buy-btn{
+    padding: 10px 25px 10px 25px;
+    background-color: rgb(54, 54, 141);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-family: cursive;
+}
+.success-div{
+    border: 1px dashed green;
+    /* border-width: initial; */
+    width: 90%;
+    border-radius: 15px;
+    margin: auto;
+    margin-bottom: 2%;
+}
+.success{
+    color: green;
+    margin: 2%;
+}

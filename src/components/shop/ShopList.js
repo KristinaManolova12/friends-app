@@ -10,7 +10,7 @@ function ProductList(props) {
             </div>
             <div className='description'>
                 <p className='productName p'>{props.name}</p>
-                <p className='p' >{props.description} </p>
+                <p className='p detail-des' >{props.description} </p>
                 <p className='p price'>Price: {props.price} $</p>
                 
             </div>

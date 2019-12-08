@@ -6,55 +6,84 @@ import friendsRegisterGIf from '../images/friendsRegisterGif.gif'
 import userService from '../services/user-service'
 
 class Register extends React.Component {
-    usernameOnChangeHandler = this.props.controlChangeHandlerFactory('username');
-    passwordOnChangeHandler = this.props.controlChangeHandlerFactory('password');
-    repeatPasswordOnChangeHandler = this.props.controlChangeHandlerFactory('repeatPassword');
 
+    constructor(props) {
+        super(props);
+        this.onSubmit = this.submitHandler.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.state = {
+            username: '',
+            password: '',
+            repeatPassword: '',
+            value: 'rachel'
+        }
+    }
+    handleChange(event) {
+        this.setState({ value: event.target.value });
+    }
 
+    handleInputChange(e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
     submitHandler = () => {
-        const errors = this.props.getFormErrorState();
-        if (!!errors) { return; }
-        const data = this.props.getFormState();
-        userService.register(data).then(() => {
+        const data = this.state
+        debugger
+        console.log(data);
+
+        userService.register(data).then((res) => {
+            debugger
+            if (res.error) {
+
+                console.log(res.error);
+
+            }
             this.props.history.push('/login');
         });
     }
-    getFirstControlError = name => {
-        const errorState = this.props.getFormErrorState();
-        return errorState && errorState[name] && errorState[name][0];
-    };
+
     render() {
-        const usernameError = this.getFirstControlError('username');
-        const passwordError = this.getFirstControlError('password');
-        const repeatPasswordError = this.getFirstControlError('repeatPassword');
+
         return (
 
             <div className="Login-register" >
                 <h2 className="login-registerH">Hello, F.r.i.e.n.d.s fan, join in our world, where every problem and stress are gone. Just register and see what we have for you!</h2>
-                <img src={friendsRegisterGIf} className="intro-gif-register" alt="Register Gif"/>
+                <img src={friendsRegisterGIf} className="intro-gif-register" alt="Register Gif" />
                 <form className="register">
 
                     <div className="form-control login-register-label register-label">
                         <label><b>Username</b></label>
                         <input type="text" placeholder="Username" name="username" id="username"
-                            onChange={this.usernameOnChangeHandler} />
-                        {usernameError && <div className="error">{usernameError}</div>}
+                            onChange={this.handleInputChange} />
+                        {/* {usernameError && <div className="error">{usernameError}</div>} */}
                     </div>
-                    <div className="form-control">
+                    <div className="form-control ">
                         <label><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="password" id="password" onChange={this.passwordOnChangeHandler} />
-                        {passwordError && <div className="error">{passwordError}</div>}
+                        <input type="password" placeholder="Enter Password" name="password" id="password" onChange={this.handleInputChange} />
+                        {/* {passwordError && <div className="error">{passwordError}</div>} */}
                     </div>
 
                     <div className="form-control ">
                         <label><b>Repeat Password</b></label>
                         <input type="password" placeholder="Repeat Password" name="repeatPassword" id="password-repeat"
-                            onChange={this.repeatPasswordOnChangeHandler} />
-                        {repeatPasswordError && <div className="error">{repeatPasswordError}</div>}
+                            onChange={this.handleInputChange} />
+                        {/* {repeatPasswordError && <div className="error">{repeatPasswordError}</div>} */}
                     </div>
-
-                    <div className="form-control register-btn">
-                        <button type="button" onClick={this.submitHandler} className="login-registerBtn">Register</button>
+                    <label className="favorite-label form-control">
+                        Pick your favorite actor:
+          <select value={this.state.value} className="select" onChange={this.handleChange}>
+                            <option value="rachel">Rachel</option>
+                            <option value="ross">Ross</option>
+                            <option value="chandler">Chandler</option>
+                            <option value="monica">Monica</option>
+                            <option value="joye">Joye</option>
+                            <option value="phoebe">Phoebe</option>
+                        </select>
+                    </label>
+                    <div className="form-control">
+                        <button type="button" onClick={this.submitHandler} className="login-registerBtn register-btn">Register</button>
                     </div>
                 </form>
             </div>
@@ -77,10 +106,10 @@ const schema = yup.object({
         .required('Password is required')
         .min(4, 'Password must be more than 4 chars'),
 
-        repeatPassword: yup.string('Password must be a string')
-        // .oneOf([yup.ref('password'), ''], 'Passwords don\'t match')
-        // .required('Password is required')
-        // .min(4, 'Password must be more than 4 chars')
+    repeatPassword: yup.string('Password must be a string')
+    // .oneOf([yup.ref('password'), ''], 'Passwords don\'t match')
+    // .required('Password is required')
+    // .min(4, 'Password must be more than 4 chars')
 });
 
 

@@ -28,14 +28,14 @@ var upload = multer({
     }
 });
 
-router.post('/', upload.single('profileImg'), (req, res, next) => {
+router.post('/', upload.single('productImg'), (req, res, next) => {
     const url = req.protocol + '://' + req.get('host')
     const image = req.file.filename
     const img = url + '/' + image
     ImgSchema.create({img}).then(result => {
       res.send({
             message: "Image upload successfully!",
-            imageCreated: { profileImg: result.img}
+            imageCreated: { productImg: result.img}
         })
     }).catch(err => {
         console.log(err),

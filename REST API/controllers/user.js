@@ -15,12 +15,18 @@ module.exports = {
             .catch(next)
     },
     post: {
-        register: (req, res, next) => {
-             const { username, password } = req.body;
-            models.User.create({ username, password })
-                .then((createdUser) => 
-                 res.send(createdUser))
-                .catch(next)
+        register: (req, res, err) => {
+             const { username, password, value } = req.body;
+
+            models.User.create({ username, password, favorite:value })
+                .then((createdUser) => {
+                   res.send(createdUser)})
+                .catch(err => {
+                    console.log(err);
+                    res.status(500).send({
+                        error: err 
+                    })
+                })
         },
 
         login: (req, res, next) => {

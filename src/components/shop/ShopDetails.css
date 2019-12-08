@@ -18,6 +18,7 @@
     display: block;
     text-align: center;
     margin: auto;
+   
 }
 .imgDiv-details{
     margin-top: 2%;
@@ -38,6 +39,17 @@
     font-weight: bold;
     font-size: 25px;
 }
-/* .imgDiv-details{
-   
-} */
+.product-buy-btn{
+    background-color: rgb(54, 54, 141);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin: 1% 5%;
+    font-size: 17px;
+    padding: 1% 5%;
+    font-family: cursive;
+}
+.detail{
+    padding-left: 2%;
+    height: 200vh;
+}

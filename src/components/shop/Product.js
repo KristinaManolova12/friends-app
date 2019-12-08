@@ -1,27 +1,36 @@
-import React, { Children } from 'react'
+import React from 'react'
 import './ShopDetails.css'
-// import ProductList from './ShopList'
 import { Link } from 'react-router-dom'
 import productService from '../../services/productService';
+import BuyProduct from '../profile/Buy';
+
 
 class ProductDetails extends React.Component {
-    state = {
-        isSame: false
+    constructor(props){
+        super(props)
+    this.state = {
+        isSame: false,
+        isToggleOn: true
     };
+    this.handleClick = this.handleClick.bind(this);
     
-          
+}  
+handleClick(){
+    this.setState(state => ({
+        isToggleOn: !state.isToggleOn
+    }))
+}
     componentDidMount() {
         const id = this.props.match.params.id;
-        const authenticated = this.props
-        debugger
+       
         productService.loadProduct(id).then(data =>{
             const product = data
-            debugger
+      
             if (userId === data.author) {
-                debugger
                 this.setState({isSame: true})
             }
-            this.setState( {name: product.name,id: product._id, description: product.description, price: product.price, productImg: product.productImg, authotId: product.author})
+            this.setState( {name: product.name,id: product._id, description: product.description,
+                 price: product.price, productImg: product.productImg, authorId: product.author})
         
          });
          const userId = this.props.userId;
@@ -29,7 +38,7 @@ class ProductDetails extends React.Component {
     }
 
     render() {
-        const isLogged = this.props.isLogged
+        // const isLogged = this.props.isLogged
         return (
             <div className="div-details">
             <article className="detail-article">
@@ -37,7 +46,7 @@ class ProductDetails extends React.Component {
             <img className="img-detail" src={this.state.productImg} alt='product-img' />
             </div>
             <div className='description-details'>
-                <p className='product-detail detail-name'>{this.state.name}</p>
+                <p className='detail-name'>{this.state.name}</p>
                 <p className='product-detail' >{this.state.description} </p>
                 <p className='product-detail'>Price: {this.state.price} $</p>
                 
@@ -47,11 +56,18 @@ class ProductDetails extends React.Component {
                {this.state.isSame &&
                 <div className="detail-btn">
                 <Link to={`/product/edit/${this.state.id}`} className="product-btn">Edit</Link>
-                <Link to={`/product/${this.state.id}`} className="product-btn">Delete</Link>
+                <Link to={`/product/delete/${this.state.id}`} className="product-btn">Delete</Link>
                 </div>}
            {!this.state.isSame && 
                 <div className="detail-btn">
-                <Link to={`/product/${this.state.id}`} className="product-btn">Buy</Link>
+                    <div >
+                    <button onClick={this.handleClick} className="product-buy-btn"> Buy </button>
+                    {this.state.isToggleOn ?
+                        null
+                        :
+                   
+                    <BuyProduct productId= {this.state.id}  productAuthorId= {this.state.authorId}/>}
+                   </div>
             </div>
             }
             

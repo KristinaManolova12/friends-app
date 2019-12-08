@@ -1,12 +1,11 @@
 .shop {
     width: 70%;
     margin: auto;
-    padding: 5%;
+    /* padding: 5%; */
     padding-top: 0;
     font-family: cursive;
     border: 2px solid rgb(54, 54, 141);
     border-radius: 5px;
-
 }
 
 h3{
@@ -16,25 +15,19 @@ h3{
 .shop-article {
     display: inline-block;
     background-color: white;
-    width: 30%;
+    width: 25%;
     height: auto;
     text-align: center;
     border: 1px solid rgb(54, 54, 141);
     border-radius: 8px;
     margin: auto;
     padding: 2% 0;
-    margin: 0 1% 5% 1%;
+    margin: 3% 0 5% 6%;
 }
-.shopH{
-    padding: 2%;
-}
-
 .p {
     font-size: 95%;
-    padding: 2% 0;
-    margin: 2% 0;
-    
-
+    padding: 1% 2%;
+    margin: 1% 0;
 }
 .offer-span{
     margin: 1.2%;
@@ -78,4 +71,13 @@ h3{
     margin: auto;
     /* padding-right: 5%; */
     /* float: left; */
+}
+.shopP{
+    text-align: center;
+    margin-left: 3%;
+}
+
+.detail-des{
+    padding-left: 2%;
+    height: 15vh;
 }
