@@ -22,14 +22,14 @@ class Product extends React.Component {
             
             <div className='shop'>
                <h3 className="shopH">Find your favorite F.R.I.E.N.D.S thing</h3>
-                {isLogged &&   <p className="shopP">If you want to make someone happy today, share with us what you have to
-               <span className="offer-span"><Link to="/create-product" className="create-link">OFFER</Link></span> </p>}
+               {isLogged && <p className="shopP">If you want to make someone happy today, share with us what you have to
+              <span className="offer-span"> <Link to="/create-product" className="create-link">OFFER</Link></span></p>}
            {products.length >0 ?
              <div>
                
                
                 {products.map((product) => 
-                <ProductList key={product._id} name= {product.name} price={product.price} description ={product.description} productImg = {product.productImg} id= {product._id}/>)}
+                <ProductList key={product._id} isLogged={isLogged} name= {product.name} price={product.price} description ={product.description} productImg = {product.productImg} id= {product._id}/>)}
                </div> : <div>Sorry, no offer today...</div>
                
            }

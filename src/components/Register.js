@@ -4,6 +4,7 @@ import "../styles/Login-Register.css";
 import inForm from '../shared/hocs/inForm'
 import friendsRegisterGIf from '../images/friendsRegisterGif.gif'
 import userService from '../services/user-service'
+import validation from '../shared/validation'
 
 class Register extends React.Component {
 
@@ -12,64 +13,94 @@ class Register extends React.Component {
         this.onSubmit = this.submitHandler.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        
         this.state = {
             username: '',
             password: '',
             repeatPassword: '',
-            value: 'rachel'
+            value: 'rachel',
+            errors: {}
         }
     }
     handleChange(event) {
         this.setState({ value: event.target.value });
     }
-
+    
     handleInputChange(e) {
+        let message=''
         this.setState({
-            [e.target.name]: e.target.value
+            rePassMessage: ''
+       });
+        message = validation(e.target.name,e.target.value)
+        debugger
+        let stateMessage= e.target.name +'Error'
+        if (message) {
+            debugger
+            
+            this.setState({
+                [e.target.name]: e.target.value,
+                errors: {[stateMessage]:message}
+           });
+        }else{
+            debugger
+        this.setState({
+             [e.target.name]: e.target.value,
+             errors: ''
+        
         });
+    }
     }
     submitHandler = () => {
         const data = this.state
         debugger
-        console.log(data);
+        console.log(this.state.errors);
+        
+        if (this.state.errors === '' && this.state.password === this.state.repeatPassword) {
+            userService.register(data).then((res) => {
+                debugger
+                if (res.status> 200) {
+                   this.setState({mongoerror: `Sorry, but username ${this.state.username} is taken`})
+                }else {
+                    this.setState({mongoerror: ''})
+                this.props.history.push('/login');
+                
+                }
+            });
+        }
+        else{
+            const message = 'Password and repeat password should be same!'
+            this.setState({rePassMessage: message})
+        }
 
-        userService.register(data).then((res) => {
-            debugger
-            if (res.error) {
-
-                console.log(res.error);
-
-            }
-            this.props.history.push('/login');
-        });
+       
     }
 
     render() {
-
         return (
 
             <div className="Login-register" >
                 <h2 className="login-registerH">Hello, F.r.i.e.n.d.s fan, join in our world, where every problem and stress are gone. Just register and see what we have for you!</h2>
                 <img src={friendsRegisterGIf} className="intro-gif-register" alt="Register Gif" />
                 <form className="register">
-
+                    {this.state.mongoerror && <div className="error">{this.state.mongoerror}</div>}
                     <div className="form-control login-register-label register-label">
                         <label><b>Username</b></label>
                         <input type="text" placeholder="Username" name="username" id="username"
                             onChange={this.handleInputChange} />
-                        {/* {usernameError && <div className="error">{usernameError}</div>} */}
+                        {this.state.errors.usernameError && <div className="error">{this.state.errors.usernameError}</div>}
                     </div>
                     <div className="form-control ">
                         <label><b>Password</b></label>
                         <input type="password" placeholder="Enter Password" name="password" id="password" onChange={this.handleInputChange} />
-                        {/* {passwordError && <div className="error">{passwordError}</div>} */}
+                        {this.state.errors.passwordError && <div className="error">{this.state.errors.passwordError}</div>}
                     </div>
 
                     <div className="form-control ">
                         <label><b>Repeat Password</b></label>
                         <input type="password" placeholder="Repeat Password" name="repeatPassword" id="password-repeat"
                             onChange={this.handleInputChange} />
-                        {/* {repeatPasswordError && <div className="error">{repeatPasswordError}</div>} */}
+                        {this.state.errors.repeatPasswordError && <div className="error">{this.state.errors.repeatPasswordError}</div>}
+                        {this.state.rePassMessage && <div className="error">{this.state.rePassMessage}</div>}
                     </div>
                     <label className="favorite-label form-control">
                         Pick your favorite actor:
@@ -91,26 +122,6 @@ class Register extends React.Component {
     }
 
 }
-const initialFormState = {
-    username: '',
-    password: '',
-    repeatPassword: ''
-};
-
-const schema = yup.object({
-    username: yup.string('Username shoud be a string')
-        .required('Username is required')
-        .min(4, 'Username should be more than 4 chars'),
-
-    password: yup.string('Password must be a string')
-        .required('Password is required')
-        .min(4, 'Password must be more than 4 chars'),
-
-    repeatPassword: yup.string('Password must be a string')
-    // .oneOf([yup.ref('password'), ''], 'Passwords don\'t match')
-    // .required('Password is required')
-    // .min(4, 'Password must be more than 4 chars')
-});
 
 
-export default inForm(Register, initialFormState, schema)
+export default Register

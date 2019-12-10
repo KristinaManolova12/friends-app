@@ -3,49 +3,74 @@ import "../styles/Login-Register.css";
 import friendsIntro from "../images/friendsIntro.gif"
 import inForm from '../shared/hocs/inForm'
 import * as yup from 'yup';
-
+import validation from '../shared/validation'
 class Login extends React.Component {
-  usernameOnChangeHandler = this.props.controlChangeHandlerFactory('username');
-  passwordOnChangeHandler = this.props.controlChangeHandlerFactory('password');
-  
-  submitHandler = () => {
-    const errors = this.props.getFormErrorState();
-    if (!!errors) { return ; }
-    const data = this.props.getFormState();
-   
-    this.props.login(this.props.history, data);
-   
+  constructor(props) {
+    super(props);
+    this.onSubmit = this.submitHandler.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this)
+
+    this.state = {
+      username: '',
+      password: '',
+      errors: {}
+    }
   }
- 
-  getFirstControlError = name => {
-    const errorState = this.props.getFormErrorState();
-    return errorState && errorState[name] && errorState[name][0];
-  };
+  handleInputChange(e) {
+    let message = ''
+    message = validation(e.target.name, e.target.value)
+    debugger
+    let stateMessage = e.target.name + 'Error'
+    if (message) {
+      debugger
+      this.setState({
+        [e.target.name]: e.target.value,
+        errors: { [stateMessage]: message }
+      });
+    } else {
+      debugger
+      this.setState({
+        [e.target.name]: e.target.value,
+        errors: ''
+      });
+    }
+  }
+
+  submitHandler = () => {
+
+    const data = this.state
+
+    this.props.login(this.props.history, data);
+
+  }
+
   render() {
-    const usernameError = this.getFirstControlError('username');
-    const passwordError = this.getFirstControlError('password');
+
     const message = this.props.message
     return (
-     
+
       <div className="Login-register">
-         
+
         <h3 className="login-registerH">Hey F.r.i.e.n.d.s Fan, welcome back! We have been waiting for you. Come on Login and let's see what is new!</h3>
-        <img src={friendsIntro} className="intro-gif" alt="Login Gif"/>
-       
+        <img src={friendsIntro} className="intro-gif" alt="Login Gif" />
+
         <form>
-        
+
           <div className="form-control login-register-label">
             <label>Username</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username..." onChange={this.usernameOnChangeHandler} />
-            {usernameError && <div className="error">{usernameError}</div>}
+            <input type="text" id="username" name="username" placeholder="Enter your username..."
+              onChange={this.handleInputChange} />
+            {this.state.errors.usernameError && <div className="error">{this.state.errors.usernameError}</div>}
           </div>
           <div className="form-control">
             <label>Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password..." onChange={this.passwordOnChangeHandler} />
-            {passwordError && <div className="error">{passwordError}</div>}
+            <input type="password" id="password" name="password"
+              placeholder="Enter your password..." onChange={this.handleInputChange} />
+            {this.state.errors.passwordError && <div className="error">{this.state.errors.passwordError}</div>}
+            {message && <div className="error">{message}</div>}
           </div>
-          
-          {message && <div className="error">{message}</div>}
+
+         
           <div className="form-control">
             <button type="button" onClick={this.submitHandler} className="login-registerBtn">Login</button>
           </div>
@@ -57,12 +82,12 @@ class Login extends React.Component {
 
 const schema = yup.object({
   username: yup.string('Username shoud be a string')
-      .required('Username is required')
-      .min(4, 'Username should be more than 4 chars'),
+    .required('Username is required')
+    .min(4, 'Username should be more than 4 chars'),
 
   password: yup.string('Password must be a string')
-      .required('Password is required')
-      .min(4, 'Password must be more than 4 chars'),
+    .required('Password is required')
+    .min(4, 'Password must be more than 4 chars'),
 
 });
 

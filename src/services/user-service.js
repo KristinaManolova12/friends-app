@@ -6,7 +6,11 @@ const userService = {
         headers: {
           'Content-type': 'application/json'
         }
-      }).then(res => res.json());
+      }).then(res =>{
+        debugger
+          return res
+       
+      });
     },
     login: function (data) {
       
@@ -18,7 +22,12 @@ const userService = {
           },
           credentials: 'include'
         }).then(res => {
-          return res.json()});
+         if (res.status > 200) {
+           return res
+         }else {
+          return res.json()
+         }
+         });
         
       },
     

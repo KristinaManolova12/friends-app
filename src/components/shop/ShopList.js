@@ -2,7 +2,9 @@ import React from 'react'
 // import Product from './Shop';
 import { Link } from 'react-router-dom'
 function ProductList(props) {
+    console.log(props);
     
+    const isLogged = props.isLogged
     return (
             <article className="shop-article">
             <div className="imgDiv">
@@ -15,7 +17,7 @@ function ProductList(props) {
                 
             </div>
             <hr/>
-            <Link to={`/product/${props.id}`} className="shop-btn">See More</Link>
+           {isLogged && <Link to={`/product/${props.id}`} className="shop-btn">See More</Link>}
         </article>
         
     );

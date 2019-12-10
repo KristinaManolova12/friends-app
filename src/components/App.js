@@ -68,7 +68,7 @@ class App extends React.Component {
   login = (history, data) => {
     userService.login(data)
       .then((data) => {
-
+        debugger
         if (data.status > 200) {
           this.setState({ isLogged: false, message: 'Invalid username or password' });
         } else {
@@ -96,18 +96,18 @@ class App extends React.Component {
               <Route exact path="/" render={render(Home, { isLogged, favorite })}  />
               <Route exact path="/register" render={render(Register, { isLogged })} />
               {/* <Route exact path="/register" component ={Register}/> */}
-              <Route exact path="/profile-products" render={render(ProfileProducts, { userId, isLogged, logout: this.logout, })} />
-              <Route exact path="/my-messages" render={render(MyMessages, { userId, isLogged, logout: this.logout, })} />
+              {isLogged && <Route exact path="/profile-products" render={render(ProfileProducts, { userId, isLogged, logout: this.logout, })} />}
+              {isLogged && <Route exact path="/my-messages" render={render(MyMessages, { userId, isLogged, logout: this.logout, })} />}
               
-              <Route exact path="/message/delete/:id" component={DeleteMessage} />
+              {isLogged &&  <Route exact path="/message/delete/:id" component={DeleteMessage} />}
               <Route exact path="/funzone" component={FunZone} />
-              <Route exact path="/product/delete/:id" component={DeleteProduct} />
-              <Route exact path="/profile" render={render(Profile, { userId, isLogged, logout: this.logout, })} />
-              <Route exact path="/product/edit/:id" render={render(ProductEdit, { userId, isLogged, logout: this.logout })} />
+              {isLogged && <Route exact path="/product/delete/:id" component={DeleteProduct} />}
+             {isLogged && <Route exact path="/profile" render={render(Profile, { userId, isLogged, logout: this.logout, })} />}
+             {isLogged &&<Route exact path="/product/edit/:id" render={render(ProductEdit, { userId, isLogged, logout: this.logout })} />}
               <Route exact path="/logout" render={render(Logout, { isLogged, logout: this.logout })} />
-              <Route exact path="/product/buy/:id" render={render(BuyProduct, { isLogged, logout: this.logout })} />
-              <Route exact path="/create-product" component={CreateProduct} />
-              <Route exact path="/product/:id" render={render(ProductDetails, { isLogged, logout: this.logout, userId })} />
+              {isLogged && <Route exact path="/product/buy/:id" render={render(BuyProduct, { isLogged, logout: this.logout })} />}
+             {isLogged && <Route exact path="/create-product" component={CreateProduct} />}
+             {isLogged && <Route exact path="/product/:id" render={render(ProductDetails, { isLogged, logout: this.logout, userId })} />}
               <Route path="*" component={NotFound} />
             </Switch>
           </div>

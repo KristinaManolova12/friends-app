@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { withRouter } from 'react-router'
+import { withRouter, Redirect } from 'react-router'
 import logo from '../images/friends-logo-png-transparent.png'
-// import Greeting from './Greeting'
 import '../styles/header.css'
 import friends from '../images/729344.jpg';
 
@@ -21,7 +20,7 @@ function Header({ isLogged }) {
         <li><Link to="/funZone">F.u.n Z.o.n.e</Link></li>
 
 
-        {isLogged && <li><Link to="/profile">Profile</Link></li>}
+        {isLogged && <li><Link to="/profile">Profile</Link></li> }
         {isLogged && <li> <Link to="/logout">L.o.g.o.u.t</Link></li>}
 
         {!isLogged && <li> <Link to="/login">L.o.g.i.n</Link></li>}
