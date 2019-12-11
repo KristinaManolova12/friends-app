@@ -1,6 +1,6 @@
 const productService = {
     createMessage: function (data) {
-      debugger
+      
       return fetch(`http://localhost:9999/api/message`, {
         body: JSON.stringify(data),
         method: 'POST',
@@ -17,21 +17,33 @@ const productService = {
       
       return fetch(`http://localhost:9999/api/message`)
       .then(res => {
-        debugger
+        
         return res.json()});
     },
 
     deleteMessage: function (id) {
-      
-      debugger
       return fetch(`http://localhost:9999/api/message/${id}`, {
         
         method: 'DELETE',
         credentials: 'include'
       }).then(res =>{
-        debugger
         return res});
     },
+    editMessage: function (data) {
+      const id = data.id
+      return fetch(`http://localhost:9999/api/message/${id}`, {
+        body: JSON.stringify(data),
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        credentials: 'include',
+       
+      }).then(res =>{
+        return res.json()});
+    }
+      
+    
     
 }
 

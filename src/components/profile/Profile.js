@@ -11,8 +11,6 @@ class Profile extends React.Component {
 
     componentDidMount() {
         const userId = this.props.userId;
-        console.log(userId);
-        debugger
         userService.loaduser(userId).then(userdata => {
             this.setState({ username: userdata.username, favorite: userdata.favorite});
         });

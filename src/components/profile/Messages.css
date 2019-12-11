@@ -27,3 +27,27 @@
     margin: 0 0 2% 0;
     
 }
+.linkMess{
+    font-size: 85%;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgb(54, 54, 141);
+}
+.isRead{
+    font-weight: bold;
+    color: tomato;
+}
+.readButton{
+    background: none;
+    font-family: cursive;
+    border: none;
+    font-size: 85%;
+    font-weight: bold;
+    color: rgb(54, 54, 141);
+}
+.readButton :hover{
+    cursor: pointer;
+}
+.isRead :hover{
+    cursor: pointer;
+}

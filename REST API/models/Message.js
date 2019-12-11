@@ -16,6 +16,9 @@ const messageSchema = new Schema({
         type: String,
         required: true
     },
+    isRead: {
+        type: Boolean, default: false
+    },
     date: { type: Date, default: Date.now },
     author: {
         type: ObjectId,

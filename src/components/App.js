@@ -1,17 +1,17 @@
 import React from 'react';
 import '../styles/App.css';
-import Header from './Header'
+import Header from './common/Header'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Product from './shop/Shop';
-import Login from './Login';
+import Login from './user/Login';
 import Home from './Home';
-import Footer from './Footer';
-import Register from './Register';
+import Footer from './common/Footer';
+import Register from './user/Register';
 import Profile from './profile/Profile';
-import Logout from './Logout';
-import FunZone from './FunZone';
+import Logout from './user/Logout';
+import FunZone from './funZone/FunZone';
 import ProductEdit from './shop/ProductEdit';
-import NotFound from './NotFound';
+import NotFound from './common/NotFound';
 import CreateProduct from './shop/CreateProduct';
 import userService from '../services/user-service';
 import Main from './Main';
@@ -21,6 +21,7 @@ import ProfileProducts from './profile/ProfileProduct'
 import MyMessages from './profile/MyMessages';
 import BuyProduct from './profile/Buy'
 import DeleteMessage from './profile/DeleteMessage';
+import Interviews from './funZone/Interviews';
 
 function render(Cmp, otherProps) {
   return function (props) {
@@ -95,13 +96,13 @@ class App extends React.Component {
               <Route exact path="/shop" render={render(Product, { isLogged })} />
               <Route exact path="/" render={render(Home, { isLogged, favorite })}  />
               <Route exact path="/register" render={render(Register, { isLogged })} />
-              {/* <Route exact path="/register" component ={Register}/> */}
               {isLogged && <Route exact path="/profile-products" render={render(ProfileProducts, { userId, isLogged, logout: this.logout, })} />}
               {isLogged && <Route exact path="/my-messages" render={render(MyMessages, { userId, isLogged, logout: this.logout, })} />}
               
               {isLogged &&  <Route exact path="/message/delete/:id" component={DeleteMessage} />}
               <Route exact path="/funzone" component={FunZone} />
               {isLogged && <Route exact path="/product/delete/:id" component={DeleteProduct} />}
+             <Route exact path="/interviews" component={Interviews} />
              {isLogged && <Route exact path="/profile" render={render(Profile, { userId, isLogged, logout: this.logout, })} />}
              {isLogged &&<Route exact path="/product/edit/:id" render={render(ProductEdit, { userId, isLogged, logout: this.logout })} />}
               <Route exact path="/logout" render={render(Logout, { isLogged, logout: this.logout })} />

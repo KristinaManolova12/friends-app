@@ -29,8 +29,9 @@ handleClick(){
             if (userId === data.author) {
                 this.setState({isSame: true})
             }
+            const price = product.price.toFixed(2)
             this.setState( {name: product.name,id: product._id, description: product.description,
-                 price: product.price, productImg: product.productImg, authorId: product.author})
+                 price: price, productImg: product.productImg, authorId: product.author})
         
          });
          const userId = this.props.userId;

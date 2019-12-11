@@ -1,9 +1,8 @@
 import React from "react";
-import "../styles/Login-Register.css";
-import friendsIntro from "../images/friendsIntro.gif"
-import inForm from '../shared/hocs/inForm'
-import * as yup from 'yup';
-import validation from '../shared/validation'
+import "./Login-Register.css";
+import friendsIntro from "../../images/friendsIntro.gif"
+
+import validation from '../../shared/validation'
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -80,19 +79,6 @@ class Login extends React.Component {
   }
 }
 
-const schema = yup.object({
-  username: yup.string('Username shoud be a string')
-    .required('Username is required')
-    .min(4, 'Username should be more than 4 chars'),
-
-  password: yup.string('Password must be a string')
-    .required('Password is required')
-    .min(4, 'Password must be more than 4 chars'),
-
-});
 
 
-export default inForm(Login, {
-  username: '',
-  password: ''
-}, schema)
+export default Login

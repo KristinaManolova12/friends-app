@@ -7,7 +7,6 @@ const userService = {
           'Content-type': 'application/json'
         }
       }).then(res =>{
-        debugger
           return res
        
       });
@@ -45,7 +44,6 @@ const userService = {
            }
         })
         .then(res => {
-          debugger
           return res.json()});
       }
 

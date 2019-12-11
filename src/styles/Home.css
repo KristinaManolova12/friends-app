@@ -1,18 +1,16 @@
 .divPage {
     width: 70%;
     margin: auto;
-    padding: 5%;
+    /* padding: 5%; */
     font-family: cursive;
     border: 2px solid rgb(54, 54, 141);
     border-radius: 5px;
     text-align: center;
+    font-size: 110%;
+    text-align: center;
 }
 ul li {
     list-style-type: circle;
-}
-.divPage {
-    font-size: 110%;
-    text-align: center;
 }
 
 .home-img {
@@ -43,17 +41,28 @@ ul li {
     padding-right: 1%;
 }
 .logged-img{
-    float: left;
-    width: 40%;
+    width: 90%;
+    padding-top: 3%;
 }
 .logged-div{
-    height: 50vh;
+    padding: 0;
 }
-.logged-h{
-    padding-top: 10%;
-}
+/* .logged-h{
+    
+} */
 .link{
 text-decoration: none;
 font-weight: bold;
 color: rgb(54, 54, 141);
+}
+.logged-text{
+    display: inline-block;
+    padding: 2%;
+   width: 30%;
+   margin-left: 2%;
+
+}
+.logged-img-div{
+    width: 45%;
+    display: inline-block;
 }

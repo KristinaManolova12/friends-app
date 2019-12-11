@@ -33,12 +33,15 @@ function Logged(props) {
     }
     return (
         <div className="logged-div">
+            <div className="logged-img-div">
             <img src={imgUrl} alt="img" className="logged-img"/>
+            </div>
             <div className="logged-text">
             <h3 className="logged-h">{message}</h3>
-
             <p>Come, let's see what is new in our <Link to="/shop" className="link">SHOP</Link>...</p>
+            
             <p>Or you want to <Link to="/create-product" className="link">OFFER</Link> us something new?</p>
+            <p>Hmm quick go on <Link to="/my-messages" className="link">Messages</Link>, you have to check if someone is texting you ...</p>
             </div>
         </div>
 

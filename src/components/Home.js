@@ -5,11 +5,7 @@ import share from '../images/share.jpg'
 import shop from '../images/shop.jpg'
 import Logged from './Logged'
 class Home extends React.Component {
-    constructor(props) {
-        super(props);
-        
-    }
-
+    
     render() {
         const favorite = this.props.favorite;
         const isLogged = this.props.isLogged;
@@ -44,7 +40,7 @@ class Home extends React.Component {
                 </p>
                 </article>
                 </div> : <Logged favorite={favorite}/>
-            }
+    }
             </div>
         )
     }

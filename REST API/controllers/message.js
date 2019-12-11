@@ -5,15 +5,11 @@ module.exports = {
         const id = req.params.productAuthorId
         models.Message.find().populate('products')
             .then((messages) => {
-               debugger
-               console.log(messages);
-               
                 res.send(messages)})
             .catch(next);
     },
     getOne: (req, res, next) => {
         const id = req.params.id
-        debugger
         models.Message.findById({_id: id})
             .then((message) => {
                
@@ -23,10 +19,9 @@ module.exports = {
 
     post: ( req, res, next) => {
         const {name, phone, message, productId,productAuthorId } = req.body;
-        console.log(productAuthorId);
         
         const { _id } = req.user;
-        models.Message.create({ name, phone, message, author: _id, productId,productAuthorId, date: undefined })
+        models.Message.create({ name, phone, message, author: _id, productId,productAuthorId,isRead:undefined, date: undefined })
             .then((createdMessage) => {
                
                 return Promise.all([
@@ -44,7 +39,14 @@ module.exports = {
         
     },
 
-
+    put:(req, res, next) => {
+        const id = req.params.id;
+        const { isRead } = req.body;
+        
+        models.Message.updateOne({ _id: id }, { isRead})
+            .then((updatedProduct) => res.send(updatedProduct))
+            .catch(next)
+    },
     delete: (req, res, next) => {
         const id = req.params.id;
         models.Message.deleteOne({ _id: id })

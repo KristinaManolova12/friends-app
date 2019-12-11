@@ -59,12 +59,12 @@ class CreateProduct extends React.Component {
         debugger
         data.productImg = this.state.productImg
         e.preventDefault()
-        if (this.state.errors === '' && this.state.result !== '') {
+        if (this.state.errors === '' && this.state.result !== '' && this.state.name !=='' && this.state.description !=='' && this.state.price !=='') {
             productService.createProduct(data).then(() => {
                 this.props.history.push('/shop');
             });
         } else {
-            this.setState({ message: 'Image is required!' })
+            this.setState({ message: 'All inputs are required' })
         }
 
     }
@@ -115,7 +115,6 @@ class CreateProduct extends React.Component {
                     <div className="form-control create-div-btn">
                         <button type="button" className="create-btn" onClick={this.submitHandler}>Create</button>
                     </div>
-
 
                 </form>
 

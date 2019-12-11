@@ -38,7 +38,6 @@ router.post('/', upload.single('productImg'), (req, res, next) => {
             imageCreated: { productImg: result.img}
         })
     }).catch(err => {
-        console.log(err),
             res.status(500).json({
                 error: err
             });

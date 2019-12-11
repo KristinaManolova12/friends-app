@@ -12,23 +12,14 @@ class MyMessages extends React.Component {
 
   componentDidMount() {
     const userId = this.props.userId;
-    console.log(userId);
-    debugger
     messageService.loadAllMessages().then(messages => {
-      debugger
-      console.log(messages);
-
       const mymessage = messages.filter(e =>
         e.productAuthorId === userId
       )
-      console.log(mymessage);
-      
       this.setState({ mymessage });
     });
   }
   render() {
-    console.log(this.state)
-debugger
     const {mymessage}= this.state;
     
     const isLogged = this.props.isLogged
@@ -59,6 +50,7 @@ debugger
            message={message.message}
            date={message.date.slice(0,10)}
            id={message._id}
+           isRead={message.isRead}
           />  
           )}
          </tbody>

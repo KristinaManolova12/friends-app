@@ -2,8 +2,6 @@ import React from 'react'
 // import Product from './Shop';
 import { Link } from 'react-router-dom'
 function ProductList(props) {
-    console.log(props);
-    
     const isLogged = props.isLogged
     return (
             <article className="shop-article">
@@ -13,7 +11,7 @@ function ProductList(props) {
             <div className='description'>
                 <p className='productName p'>{props.name}</p>
                 <p className='p detail-des' >{props.description} </p>
-                <p className='p price'>Price: {props.price} $</p>
+                <p className='p price'>Price: {props.price.toFixed(2)} $</p>
                 
             </div>
             <hr/>

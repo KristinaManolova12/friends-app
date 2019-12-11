@@ -39,7 +39,6 @@ module.exports = {
 
     put: (req, res, next) => {
         const id = req.params.id;
-        debugger
         const { description,price,name, productImg, oldImage } = req.body;
         if (oldImage && oldImage !==productImg) {
             const fileToRemove = oldImage.slice(22)

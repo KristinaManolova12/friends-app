@@ -1,6 +1,6 @@
 import React from 'react';
-import notFound from '../images/NotFound.gif'
-import '../styles/NotFound.css'
+import notFound from '../../images/NotFound.gif'
+import './NotFound.css'
 function NotFound(props) {
    
     return (

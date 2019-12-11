@@ -1,6 +1,6 @@
 const productService = {
     createProduct: function (data) {
-      debugger
+      
       return fetch(`http://localhost:9999/api/shop`, {
         body: JSON.stringify(data),
         method: 'POST',
@@ -13,7 +13,7 @@ const productService = {
         {return res});
     },
     uploadImage: function (formData) {
-      debugger
+      
       return fetch(`http://localhost:9999/api/upload`, {
         body: formData,
         method: 'POST',
@@ -22,7 +22,7 @@ const productService = {
         // },
         credentials: 'include'
       }).then(res => {
-        debugger
+        
         return res.json()});
     },
    
@@ -49,7 +49,7 @@ const productService = {
          }
       })
       .then(res => {
-        debugger
+        
         return res.json()});
     },
     updateProduct: function (data) {
@@ -68,14 +68,11 @@ const productService = {
     },
 
     deleteProduct: function (id) {
-      
-      debugger
       return fetch(`http://localhost:9999/api/shop/${id}`, {
         
         method: 'DELETE',
         credentials: 'include'
       }).then(res =>{
-        debugger
         return res});
     },
     

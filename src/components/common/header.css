@@ -26,10 +26,12 @@
     padding: 10px 15px 10px 15px;
     /* float: inline-end; */
     font-size: 150%;
-    
+    cursor: pointer;
 }
 #nav-links li :hover{
-    text-decoration: underline
+    text-decoration: underline;
+    background-color: rgb(85, 85, 138);
+    border-radius: 10px;
 }
 
 

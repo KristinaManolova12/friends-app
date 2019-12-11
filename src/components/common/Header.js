@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { withRouter, Redirect } from 'react-router'
-import logo from '../images/friends-logo-png-transparent.png'
-import '../styles/header.css'
-import friends from '../images/729344.jpg';
+import { withRouter } from 'react-router'
+import logo from '../../images/friends-logo-png-transparent.png'
+import './header.css'
+import friends from '../../images/729344.jpg';
 
 function Header({ isLogged }) {
 

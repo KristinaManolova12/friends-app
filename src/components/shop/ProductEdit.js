@@ -1,7 +1,5 @@
 import React from "react";
 import "./CreateProduct.css";
-import * as yup from 'yup';
-import inForm from '../../shared/hocs/inForm'
 import productService from '../../services/productService'
 import validation from '../../shared/validation'
 class EditProduct extends React.Component {
@@ -41,17 +39,14 @@ class EditProduct extends React.Component {
     handleInputChange(e) {
         let message = ''
         message = validation(e.target.name, e.target.value)
-        debugger
+    
         let stateMessage = e.target.name + 'Error'
         if (message) {
-            debugger
-
             this.setState({
                 [e.target.name]: e.target.value,
                 errors: { [stateMessage]: message }
             });
         } else {
-            debugger
             this.setState({
                 [e.target.name]: e.target.value,
                 errors: ''
@@ -64,13 +59,10 @@ class EditProduct extends React.Component {
         e.preventDefault()
         const formData = new FormData()
         formData.append('productImg', this.state.productObj)
-        debugger
         productService.uploadImage(formData)
             .then(res => {
-                debugger
                 const result = res.imageCreated
                 this.setState({ productImg: result.productImg })
-                debugger
             })
         productService.getimg()
             .then(imgs =>
@@ -78,14 +70,14 @@ class EditProduct extends React.Component {
     }
 
     submitHandler = (e) => {
-        debugger
+        
         e.preventDefault();
         const data = this.state;
-        debugger
+        
         data.productImg = this.state.productImg
         if (this.state.errors === '') {
             productService.updateProduct(data).then((res) => {
-                debugger
+                
                 this.props.history.push('/shop');
             });
         }
@@ -103,14 +95,12 @@ class EditProduct extends React.Component {
                         <input type="text" placeholder="T-shirt, cap, etc..." name="name" id="name"
                             onChange={this.handleInputChange} value={this.state.name} required />
                     </div>
-                {this.state.errors.nameError && <div className="error">{this.state.errors.nameError}</div>}
-
-
+                    {this.state.errors.nameError && <div className="error">{this.state.errors.nameError}</div>}
                     <div className="form-control create-div">
                         <label className="create-label">Description</label>
                         <textarea type="text" placeholder="Whrite some description" name="description" id="description"
                             onChange={this.handleInputChange} value={this.state.description} required></textarea>
-                    {this.state.errors.descriptionError && <div className="error">{this.state.errors.descriptionError}</div>}
+                        {this.state.errors.descriptionError && <div className="error">{this.state.errors.descriptionError}</div>}
 
                     </div>
 
@@ -118,7 +108,7 @@ class EditProduct extends React.Component {
                         <label className="create-label">Price</label>
                         <input type="number" placeholder="what is the price" name="price" value={this.state.price}
                             required id="price" onChange={this.handleInputChange} />
-                     {this.state.errors.priceError && <div className="error">{this.state.errors.priceError}</div>}
+                        {this.state.errors.priceError && <div className="error">{this.state.errors.priceError}</div>}
 
                     </div>
                     <div className="form-group">
@@ -138,25 +128,4 @@ class EditProduct extends React.Component {
     }
 
 }
-const initialFormState = {
-    name: '',
-    price: '',
-    description: '',
-    productImg: ''
-};
-
-const schema = yup.object({
-    name: yup.string('Name shoud be a string')
-        .required('Name is required')
-        .min(4, 'Name should be more than 4 chars'),
-
-    description: yup.string('Description must be a string')
-        .required('Description is required')
-        .min(4, 'Description must be more than 4 chars'),
-    price: yup.string('Price must be a number')
-        .required('Price is required'),
-    productImg: yup.mixed().required('File required')
-});
-// export default EditProduct
-
-export default inForm(EditProduct, initialFormState, schema)
+export default EditProduct

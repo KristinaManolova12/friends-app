@@ -1,10 +1,8 @@
 import React from "react";
-import * as yup from 'yup';
-import "../styles/Login-Register.css";
-import inForm from '../shared/hocs/inForm'
-import friendsRegisterGIf from '../images/friendsRegisterGif.gif'
-import userService from '../services/user-service'
-import validation from '../shared/validation'
+import "./Login-Register.css";
+import friendsRegisterGIf from '../../images/friendsRegisterGif.gif'
+import userService from '../../services/user-service'
+import validation from '../../shared/validation'
 
 class Register extends React.Component {
 
@@ -52,12 +50,10 @@ class Register extends React.Component {
     }
     submitHandler = () => {
         const data = this.state
-        debugger
-        console.log(this.state.errors);
         
-        if (this.state.errors === '' && this.state.password === this.state.repeatPassword) {
+        if (this.state.errors === '' && this.state.password === this.state.repeatPassword && this.state.username !== '' && this.state.password !== '' ) {
             userService.register(data).then((res) => {
-                debugger
+            
                 if (res.status> 200) {
                    this.setState({mongoerror: `Sorry, but username ${this.state.username} is taken`})
                 }else {

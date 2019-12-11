@@ -9,8 +9,6 @@ module.exports = {
 
         models.User.findById({ _id: userId }).populate('products')
             .then((user) => {
-                debugger
-
                 res.send(user)
             })
             .catch(next)
@@ -21,7 +19,6 @@ module.exports = {
 
             models.User.create({ username, password, favorite: value })
                 .then((createdUser) => {
-                    console.log(createdUser)
                     res.send(createdUser)
                 })
                 .catch(err => {
