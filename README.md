@@ -1,9 +1,10 @@
-Friends Zone is web site for fans who love watching Friends TV show over and over again.
+## Friends Zone
+### Web site for fans who love watching Friends TV show over and over again.
 
 The web site has two levels of access to it's content: registered user and guest user.
 
 Guest user can access shop page, but cannot buy anything. Also we can access the fun page and watch videos from there.
-![Login](public/Login.png)
+![Login](./public/Login.PNG)
 On register page user have to write some Username and Favorite character wich will be used. After registration, user will be redirect to Login page.
 
 After successfull login user will be redirected to Logged Home Page, wich view depends on information about the user and he get authorised to access:
