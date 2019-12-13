@@ -13,6 +13,7 @@
 }
 #userinfo{
     padding: 5%;
+    margin-left: 56%;
 }
 .profil-nav{
    text-decoration: none;
@@ -35,6 +36,6 @@
 }
 .profile-img{
     float: left;
-    margin: 2% 3%;
+    margin: 2% 3% 2% 9%;
     border-radius: 5px;
 }

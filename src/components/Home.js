@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/Home.css'
+import { Link } from 'react-router-dom'
 import aboutfriends from '../images/aboutfriends.jpg'
 import share from '../images/share.jpg'
 import shop from '../images/shop.jpg'
@@ -23,11 +24,11 @@ class Home extends React.Component {
                 
                 <img src={shop} className='home-img left' alt='friends'></img>
                 <p className="article-p">
-                Forget yuor problems, and go on a place where everything is about F.R.I.E.N.D.S
+                Forget your problems, and go on a place where everything is about <Link to="/funZone" className="link">F.R.I.E.N.D.S</Link>
                 </p>
                 </article>
                 <article className="article">
-                <p className="article-p">Sell some Friends staff, like clothes, games, cups, ect... Make someone happy with your OFFER.</p>
+                <p className="article-p">Sell some Friends stuff in our, like clothes, games, cups, ect... Make someone happy with your offer.</p>
                 <img src={share} className='home-img right' alt='information'></img>
                 
                 </article>
@@ -36,7 +37,7 @@ class Home extends React.Component {
                 
                 <img src={aboutfriends} className='home-img left' alt='shop'></img>
                 <p className="article-p">
-                Fill your F.R.I.E.N.D.S collection... Check out our SHOP.
+                Fill your F.R.I.E.N.D.S collection... Check out our <Link to="/shop" className="link">SHOP</Link> .
                 </p>
                 </article>
                 </div> : <Logged favorite={favorite}/>

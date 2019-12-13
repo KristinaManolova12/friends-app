@@ -26,12 +26,9 @@ class Profile extends React.Component {
            
            <img src={profileDiv} alt="img" className="profile-img"/>
            <div id="userinfo">
-               
-                
-                <div>
                   <p>Username: <b>{this.state.username}</b></p>
                   <p style={{ textTransform: 'capitalize'}}>Favorite F.r.i.e.n.d: <b>{favorite}</b></p>
-                </div>
+            
                 </div>
             </div>
 

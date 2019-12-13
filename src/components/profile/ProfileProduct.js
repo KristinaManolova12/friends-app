@@ -21,7 +21,7 @@ class ProfileProducts extends React.Component {
       }
     render() {
         const { products } = this.state;
-        
+        const isLogged= this.props.isLogged
         return (
             
             <div className='shop'>
@@ -30,7 +30,7 @@ class ProfileProducts extends React.Component {
              <div>
                
                 {products.map((product) => 
-                <ProductList key={product._id} name= {product.name} price={product.price} description ={product.description} productImg = {product.productImg} id= {product._id}/>)}
+                <ProductList key={product._id} name= {product.name} isLogged = {isLogged} price={product.price} description ={product.description} productImg = {product.productImg} id= {product._id}/>)}
                </div> :<div className="message-error">
          
          <p className="message-p">Sorry... You don't have any offers</p> 
