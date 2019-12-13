@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
-import logo from '../../images/friends-logo-png-transparent.png'
+import logo from '../../images/friendsLogo.png'
 import './header.css'
 import friends from '../../images/729344.jpg';
 
